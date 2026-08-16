@@ -1,0 +1,2 @@
+Nodo by Kreluna — programma da computer.
+npm install && npm run desktop
