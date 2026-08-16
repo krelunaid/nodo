@@ -1,0 +1,9 @@
+GitHub ha il codice: https://github.com/krelunaid/nodo
+
+Su Drive (cartella Nodo Kreluna):
+01-Programma  → Nodo-Windows.zip
+02-Codice     → Nodo-progetto.zip
+03-Documenti  → Nodo-Kreluna.pdf
+04-Backup     → copie con la data
+
+Da Grok non si caricano zip su Drive. Trascina i file scaricati in quelle cartelle.
