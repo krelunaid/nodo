@@ -1,0 +1,13 @@
+{
+  "name": "Nodo by Kreluna",
+  "short_name": "Nodo",
+  "description": "Centralino e studio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eef3fb",
+  "theme_color": "#eef3fb",
+  "icons": [
+    { "src": "/nodo-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/nodo-icon.jpg", "sizes": "512x512", "type": "image/jpeg" }
+  ]
+}

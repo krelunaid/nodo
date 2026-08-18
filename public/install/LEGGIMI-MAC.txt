@@ -1,0 +1,13 @@
+Nodo per MacBook (Apple Silicon — M1, M2, M3, M4)
+================================================
+
+1. Scarica Nodo-Mac.zip
+2. Estrai: ottieni Nodo.app
+3. Trascina Nodo.app in Applicazioni (o aprilo dove sta)
+4. La prima volta: tasto destro su Nodo → Apri → Apri
+   (non è firmato da Apple: è normale)
+
+Non gira sui Mac Intel vecchi. Se il tuo è Intel 2015–2020, chiedi lo zip Intel.
+
+macOS Monterey o più nuovo.
+La preview in chat NON è questo file. Questo è il programma.

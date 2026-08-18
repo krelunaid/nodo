@@ -1,0 +1,15 @@
+NODO by Kreluna — programma da computer
+=======================================
+
+Questo non è un sito. È il programma dello studio.
+
+1. Installa Node.js (https://nodejs.org) se non c'è.
+2. Nella cartella del progetto:
+     npm install
+     npm run build
+     npm run desktop
+
+Si apre una finestra: Nodo — Chiara Valli — int. 200.
+
+Le chiamate restano in prova. Nessuna linea pubblica.
+Non è YouNeed e non è affiliato ad Ambrogio.

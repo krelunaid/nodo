@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Nodo — dati del centralino</title>
+  <style>
+    @page { size: A4; margin: 15mm; }
+    body { margin: 0; color: #1c2744; font: 10.5pt/1.45 "IBM Plex Sans", Helvetica, sans-serif; }
+    h1 { font-size: 18pt; margin: 0 0 6px; }
+    h2 { font-size: 12pt; color: #4f6ef7; margin: 16px 0 6px; }
+    p { margin: 0 0 7px; }
+    .sub { color: #5b6b88; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; margin: 6px 0 10px; font-size: 9.5pt; }
+    th, td { border: 1px solid #d5deee; padding: 5px 7px; text-align: left; vertical-align: top; }
+    th { background: #eef3fb; width: 28%; }
+    .box { background: #eef3fb; border: 1px solid #d5deee; border-radius: 8px; padding: 8px 10px; margin: 8px 0; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #4f6ef7; display: inline-block; margin-right: 5px; }
+    .foot { margin-top: 14px; font-size: 8.5pt; color: #8b99b3; }
+    ul { margin: 4px 0 8px; padding-left: 16px; }
+    li { margin: 2px 0; }
+  </style>
+</head>
+<body>
+  <p><span class="dot"></span><strong>Nodo</strong> by Kreluna</p>
+  <h1>Dati del centralino — per non sbagliare</h1>
+  <p class="sub">Da dare all’installatore e da copiare in Nodo → Deviazioni. Non mettere le password in chat o in mail aperta.</p>
+
+  <div class="box">
+    <strong>Tre cose bastano per partire:</strong> server + interno + password.<br>
+    Il resto è per non far fallire la prova (porta, audio, da fuori studio).
+  </div>
+
+  <h2>1. Quello che chiedi sempre (obbligatorio)</h2>
+  <table>
+    <tr><th>Loro lo chiamano</th><th>In Nodo</th><th>Esempio</th></tr>
+    <tr><td>Registrar / SIP server / dominio / host</td><td>Server</td><td>sip.studio.it oppure 192.168.1.10</td></tr>
+    <tr><td>Interno / extension / user</td><td>Interno</td><td>200</td></tr>
+    <tr><td>Password / secret / PIN SIP</td><td>Password</td><td>— (non copiarla qui)</td></tr>
+  </table>
+  <p>A volte <em>Auth username</em> è diverso dall’interno (es. interno 200, login <code>chiara200</code>). Se la prova fallisce, chiedi: «user di autenticazione è uguale all’interno?»</p>
+
+  <h2>2. Quello che serve per non far cadere la chiamata</h2>
+  <table>
+    <tr><th>Campo</th><th>Perché</th><th>Valore tipico</th></tr>
+    <tr><td>Porta</td><td>Senza porta giusta non si registra</td><td>5060 (normale) · 5061 se dicono TLS</td></tr>
+    <tr><td>Trasporto</td><td>UDP / TCP / TLS / WSS</td><td>UDP in ufficio. WSS se Nodo è nel browser</td></tr>
+    <tr><td>Outbound proxy</td><td>A volte il server “vero” è un altro</td><td>Solo se lo scrivono loro</td></tr>
+    <tr><td>STUN / TURN</td><td>Da casa o cellulare, dietro il modem</td><td>Chiedi: «funziona da fuori studio?»</td></tr>
+    <tr><td>Codec</td><td>Audio</td><td>PCMU / PCMA (G.711). Opus se lo hanno</td></tr>
+    <tr><td>SRTP / crittografia</td><td>Audio cifrato</td><td>Solo se obbligatorio. Non inventarlo</td></tr>
+    <tr><td>WebSocket (WSS)</td><td>App e sito, non il telefono da tavolo</td><td>wss://sip.studio.it:8089/ws (es. 3CX)</td></tr>
+  </table>
+
+  <h2>3. Due tipi di “dati” — non mescolarli</h2>
+  <table>
+    <tr><th>Tipo</th><th>A cosa serve</th><th>Lo usiamo per Nodo?</th></tr>
+    <tr><td><strong>Interno / extension</strong></td><td>Una persona: Chiara = 200, come la cornetta</td><td><strong>Sì.</strong> È questo.</td></tr>
+    <tr><td><strong>Trunk / tronco SIP</strong></td><td>Tutto lo studio verso TIM. Un account unico, tanti canali</td><td><strong>No.</strong> Non metterlo in Deviazioni. È del centralino, non di Chiara.</td></tr>
+  </table>
+  <p>Se ti danno «username trunk» e «canali contemporanei», quello non va nelle tre caselle di Nodo.</p>
+
+  <h2>4. Numero pubblico (il fisso)</h2>
+  <ul>
+    <li>Numero geografico (02…, 035…) — quello che digita il cliente</li>
+    <li>DID — quale numero arriva su quale interno (es. 02 123 suona 200 e 201)</li>
+    <li>CLI / presentarsi — che numero vede chi riceve quando chiamate voi</li>
+  </ul>
+  <p>Nodo non compra il numero. Lo ha già lo studio. Serve solo sapere: «quando arriva il 02, chi squilla?»</p>
+
+  <h2>5. Cosa deve poter fare (funzioni)</h2>
+  <ul>
+    <li>Registrare un <strong>softphone</strong> (computer / app) sullo stesso interno della cornetta</li>
+    <li><strong>Trasferimento</strong> (passa a): cieco (solo gira) e assistito (parli prima)</li>
+    <li>Due dispositivi insieme (cornetta + PC): chi risponde, l’altro smette</li>
+    <li>Da fuori (casa, cantiere): sì o no? Se no, solo in studio</li>
+    <li>Segreteria, non rispondere, inoltro al cellulare — già in Nodo come regole; le esegue il centralino</li>
+  </ul>
+
+  <h2>6. Errori classici</h2>
+  <ul>
+    <li>Mettere i dati del <strong>trunk</strong> al posto dell’<strong>interno</strong></li>
+    <li>Password dell’<strong>email</strong> o del <strong>portale</strong> invece della password SIP</li>
+    <li>Interno giusto, <strong>auth user</strong> diverso, e non lo sai</li>
+    <li>Porta 5060 chiusa dal firewall / dal modem</li>
+    <li>Provare da casa senza STUN: in studio va, fuori no</li>
+    <li>Staccare le cornette «perché c’è Nodo» — no. Si affianca</li>
+    <li>Scrivere le password in WhatsApp o in questa chat</li>
+    <li>Attivare tutti gli interni insieme. Prima <strong>uno solo</strong> (il 200)</li>
+    <li>Confondere «funziona Nodo» con «funziona la linea»: senza server che risponde, è solo lo schermo</li>
+  </ul>
+
+  <h2>7. Foglio da far compilare allo studio</h2>
+  <table>
+    <tr><th>Campo</th><th>Loro scrivono qui</th></tr>
+    <tr><td>Marca centralino (3CX, Yeastar, TIM…)</td><td></td></tr>
+    <tr><td>Server / registrar</td><td></td></tr>
+    <tr><td>Porta e trasporto (5060 UDP / 5061 / WSS)</td><td></td></tr>
+    <tr><td>Interno di prova</td><td></td></tr>
+    <tr><td>Auth username (se diverso)</td><td></td></tr>
+    <tr><td>Password — a voce o foglio chiuso</td><td></td></tr>
+    <tr><td>Softphone sullo stesso interno della cornetta? Sì / No</td><td></td></tr>
+    <tr><td>Funziona da fuori studio? Sì / No</td><td></td></tr>
+    <tr><td>WebSocket WSS (per app/browser)</td><td></td></tr>
+    <tr><td>Numero pubblico che arriva su questo interno</td><td></td></tr>
+  </table>
+
+  <h2>8. Dove si mettono in Nodo</h2>
+  <p><strong>Deviazioni → Collega il centralino.</strong> Tre caselle: server, interno, password. Poi Salva e prova.</p>
+  <p>Il resto di questa pagina (porta, WSS, STUN) si aggiunge dopo, se la prima prova fallisce — non prima.</p>
+
+  <p class="foot">Nodo by Kreluna · i dati restano sullo studio · una prova = un interno · non è un secondo operatore telefonico</p>
+</body>
+</html>

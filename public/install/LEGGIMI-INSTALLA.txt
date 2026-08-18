@@ -1,0 +1,20 @@
+NODO BY KRELUNA — come si installa
+
+WINDOWS 10 o 11 (64 bit)
+1. Scarica Nodo-Windows.zip
+2. Estrailo (tasto destro → Estrai tutto)
+3. Apri la cartella Nodo
+4. Doppio clic su Nodo.exe
+5. Se Windows dice "Windows ha protetto il PC" → Altre informazioni → Esegui comunque
+   (è normale: il file non è firmato da Microsoft)
+
+Non serve Internet per aprire il programma. Le chiamate vere servono al centralino cloud.
+
+MAC (Intel o Apple Silicon)
+Da qui non si può firmare un’app Apple. Due vie:
+A) Nel browser Safari o Chrome: apri Nodo e usa “Aggiungi al Dock / Installa app”
+B) Sul Mac con Node installato: apri Terminale nella cartella del programma e lancia
+   npm install && npm run desktop
+   Si apre la finestra Nodo.
+
+Non gira su Windows 7, XP, o Mac molto vecchi (prima di Big Sur).

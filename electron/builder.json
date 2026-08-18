@@ -1,0 +1,38 @@
+{
+  "appId": "it.kreluna.nodo",
+  "productName": "Nodo",
+  "copyright": "Kreluna",
+  "directories": {
+    "output": "release"
+  },
+  "files": ["electron/**/*", "package.json"],
+  "extraResources": [
+    {
+      "from": "desktop-web",
+      "to": "web"
+    }
+  ],
+  "win": {
+    "target": [
+      { "target": "portable", "arch": ["x64"] },
+      { "target": "nsis", "arch": ["x64"] }
+    ],
+    "artifactName": "Nodo-Kreluna-${version}-Windows-${arch}.${ext}"
+  },
+  "nsis": {
+    "oneClick": true,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": false
+  },
+  "mac": {
+    "target": [
+      { "target": "zip", "arch": ["x64", "arm64"] }
+    ],
+    "category": "public.app-category.business",
+    "artifactName": "Nodo-Kreluna-${version}-Mac-${arch}.${ext}"
+  },
+  "linux": {
+    "target": ["AppImage"],
+    "artifactName": "Nodo-Kreluna-${version}-Linux.${ext}"
+  }
+}

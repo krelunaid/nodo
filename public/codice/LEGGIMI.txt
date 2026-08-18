@@ -1,0 +1,5 @@
+Questa cartella è SOLO il codice scritto.
+Non è l'applicazione in esecuzione.
+
+Apri TUTTO-IL-CODICE.txt per avere ogni file in un unico testo.
+Oppure apri le sottocartelle src/ come in un progetto normale.
